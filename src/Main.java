@@ -1,6 +1,9 @@
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Поехали!");
+        TaskManager taskManager = new TaskManager();
+
+        taskManager.addTask(1, new Task("vika", "do smile", Status.NEW));
+        taskManager.print();
     }
 }
