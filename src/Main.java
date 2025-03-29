@@ -3,25 +3,32 @@ public class Main {
     public static void main(String[] args) {
         TaskManager taskManager = new TaskManager();
 
-        taskManager.addTask(1, new Task("Vika", "do smile", Status.NEW));
-        taskManager.addTask(2, new Task("Denis", "marry", Status.NEW));
+        taskManager.addTask(new Task("Vika", "smile"));
+        taskManager.addTask(new Task("Denis", "marry"));
+        taskManager.addTask(new Task("Lexa", "buy car"));
+        taskManager.addTask(new Task("Andrew", "be happy"));
 
-        taskManager.getTasks();
+        System.out.println(taskManager.getTasks());
+        System.out.println();
 
-        taskManager.clearTasks();
-
-        taskManager.addTask(1, new Task("Vika", "do smile", Status.NEW));
-        taskManager.addTask(2, new Task("Denis", "marry", Status.NEW));
-        taskManager.addTask(3, new Task("Lexa", "buy car", Status.NEW));
-        taskManager.addTask(4, new Task("Andrew", "be happy", Status.NEW));
-
-        taskManager.getById(4);
+        System.out.println(taskManager.getById(1));
+        System.out.println();
 
         taskManager.updateTask(2, new Task("Denis", "be happy", Status.IN_PROGRESS));
+        System.out.println(taskManager.getById(2));
 
-        taskManager.getTasks();
+        taskManager.deleteById(4);
+        System.out.println(taskManager.getTasks());
+        System.out.println();
 
-        taskManager.deleteById(2);
-        taskManager.getTasks();
+        taskManager.addTask(new Task("Andrew", "be happy"));
+        System.out.println(taskManager.getTasks());
+
+        taskManager.clearTasks();
+        System.out.println(taskManager.getTasks());
+        System.out.println();
+
+        taskManager.addTask(new Task("Переезд", "В Санкт-Петербург"));
+        System.out.println(taskManager.getTasks());
     }
 }

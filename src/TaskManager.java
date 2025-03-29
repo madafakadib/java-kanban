@@ -1,32 +1,46 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TaskManager {
-
+    private int identeficator = 1;
     HashMap<Integer, Task> tasks = new HashMap<>();
-    //получение списка всех задача
-    public void getTasks(){
-        for (Task task : tasks.values()){
-            System.out.println(task);
-        }
+
+    /**получение списка всех задача**/
+    public ArrayList<Task> getTasks(){
+        return new ArrayList<>(tasks.values());
     }
-    //удаление всех задача
+    /**удаление всех задача**/
     public void clearTasks(){
         tasks.clear();
+        identeficator = 1;
     }
-    //получение по идентификатору
-    public void getById(int id){
-        System.out.println(tasks.get(id));
+    /** получение по идентификатору **/
+    public Task getById(int id){
+        return tasks.get(id);
     }
-    //создание задача
-    public void addTask(int id, Task task){
-        tasks.put(id, task);
+    /**создание задача**/
+    public void addTask(Task task){
+        task.setId(identeficator);
+        tasks.put(task.getId(), task);
+        identeficator++;
     }
-    //обновление задачи
+    /**обновление задачи**/
     public void updateTask(int id, Task task){
-        tasks.put(id, task);
+        task.setId(id);
+        int taskId = task.getId();
+        tasks.replace(taskId, task);
     }
-    //удаление по идентификатору
+    /**удаление по идентификатору**/
     public void deleteById(int id){
         tasks.remove(id);
+        identeficator--;
+    }
+
+    public int getIdenteficator() {
+        return identeficator;
+    }
+
+    public void setIdenteficator(int identeficator) {
+        this.identeficator = identeficator;
     }
 }
