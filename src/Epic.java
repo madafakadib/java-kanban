@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Epic extends Task{
 
@@ -8,12 +9,24 @@ public class Epic extends Task{
         super(name, description);
     }
 
-    public void addSubtask(Subtask subtask){
+    public void addSubtask(Subtask subtask) {
         subtaskArrayList.add(subtask);
     }
 
-    public ArrayList<Subtask> getSubtaskArrayList(){
+    public ArrayList<Subtask> getSubtaskArrayList() {
         return subtaskArrayList;
+    }
+
+    public void clearSubtaskArrayList() {
+        subtaskArrayList.clear();
+    }
+
+    public void removeSubtask(int id) {
+        subtaskArrayList.remove(id);
+    }
+
+    public void setSubtaskArrayList(ArrayList<Subtask> newSubtask) {
+        subtaskArrayList = newSubtask;
     }
 
     @Override
