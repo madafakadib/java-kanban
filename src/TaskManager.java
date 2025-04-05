@@ -121,7 +121,5 @@ public class TaskManager {
         } else if (inProgressCount >= 1) {
             epic.setStatus(Status.IN_PROGRESS);
         }
-
-     //   System.out.println(count);
     }
 }
