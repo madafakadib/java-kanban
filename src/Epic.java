@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Epic extends Task{
+public class Epic extends Task {
 
     ArrayList<Subtask> subtaskArrayList = new ArrayList<>();
 
