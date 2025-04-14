@@ -58,9 +58,11 @@ public class TaskManager {
     }
 
     public void deleteEpicByID(int id){
+        ArrayList<Subtask> subtaskArrayList = epics.get(id).getSubtaskArrayList();
+        for (Subtask subtask : subtaskArrayList){
+            subtasks.remove(subtask.getId());
+        }
         epics.remove(id);
-        ArrayList<Subtask> hz = epics.get(id).getSubtaskArrayList();
-        updateStatus(id);
     }
     
     public void addSubtask(Subtask subtask){
@@ -105,14 +107,17 @@ public class TaskManager {
     }
 
     public void deleteSubtaskByID(int id){
+
         Subtask subtask = subtasks.get(id);
-        subtasks.remove(id);
 
         Epic epic = epics.get(subtask.getEpicID());
         ArrayList<Subtask> newSubtask = epic.getSubtaskArrayList();
         newSubtask.remove(subtask);
         epic.setSubtaskArrayList(newSubtask);
-        updateStatus(id);
+
+        subtasks.remove(id);
+
+        updateStatus(epic.getId());
     }
 
     public ArrayList<Subtask> getSubtasksByEpicID(int id){
@@ -139,12 +144,16 @@ public class TaskManager {
             }
         }
 
-        if (doneCount == count) {
-            epic.setStatus(Status.DONE);
-        } else if (inProgressCount >= 1) {
-            epic.setStatus(Status.IN_PROGRESS);
-        } else {
+        if (newCount == count && subtaskArrayList.isEmpty()){
             epic.setStatus(Status.NEW);
+            return;
+        }
+        if (doneCount == subtaskArrayList.size()) {
+            epic.setStatus(Status.DONE);
+            return;
+        }
+        if (inProgressCount >= 1) {
+            epic.setStatus(Status.IN_PROGRESS);
         }
     }
 }

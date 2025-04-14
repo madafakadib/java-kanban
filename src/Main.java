@@ -11,16 +11,13 @@ public class Main {
         taskManager.addSubtask(new Subtask(6, "Купить кольцо", "найти золотое кольцо с бриллиантом"));
         System.out.println(taskManager.getTasks());
         System.out.println(taskManager.getEpics());
-        taskManager.updateTask(new Task("Тренировка", "иду на тренировку", Status.IN_PROGRESS));
+        taskManager.updateTask(new Task(1,"Тренировка", "иду на тренировку", Status.IN_PROGRESS));
         taskManager.updateSubtask(new Subtask(4,3, "Билеты", "билеты куплены", Status.DONE));
         taskManager.updateSubtask(new Subtask(5,3, "Собрать вещи", "осталось чуть-чуть", Status.IN_PROGRESS));
         taskManager.updateSubtask(new Subtask(7,6,"Купить кольцо", "кольцо куплено", Status.DONE));
         System.out.println(taskManager.getTasks());
         System.out.println(taskManager.getEpics());
-        System.out.println(taskManager.getSubtasksByEpicID(3));
-        taskManager.clearSubtasks();
-        taskManager.addTask(new Task("dasdas", "qwertwetre"));
+        taskManager.deleteSubtaskByID(7);
         System.out.println(taskManager.getEpics());
-        System.out.println(taskManager.getTasks());
     }
 }
