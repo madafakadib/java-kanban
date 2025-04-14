@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class Task {
-    private int id = 1;
+    private int id = 0;
     private String name;
     private String description;
     private Status status;
@@ -13,6 +13,13 @@ public class Task {
     }
 
     public Task(String name, String description, Status status){
+        this.name = name;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Task(int id ,String name, String description, Status status){
+        this.id = id;
         this.name = name;
         this.description = description;
         this.status = status;
@@ -46,15 +53,12 @@ public class Task {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return id == task.id &&
-                Objects.equals(name, task.name) &&
-                Objects.equals(description, task.description) &&
-                status == task.status;
+        return id == task.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, status);
+        return Objects.hash(id);
     }
 
     @Override
