@@ -1,5 +1,7 @@
+package tasks;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+import status.Status;
 
 public class Epic extends Task {
 
@@ -35,12 +37,12 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "Epic{" +
+        return "tasks.Epic{" +
                 "id=" + getId() +
                 ", name='" + getName() + '\'' +
                 ", description='" + getDescription() + '\'' +
                 ", status=" + getStatus() +
-                ", subtaskArrayList=" + subtaskArrayList +
+                ", subtaskArrayList=" + subtaskArrayList.size() +
                 '}';
     }
 }
