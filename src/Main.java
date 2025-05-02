@@ -16,6 +16,7 @@ public class Main {
         taskManager.addSubtask(new Subtask(3, "Собрать вещи", "отправить их доставкой СДЕК"));
         taskManager.addEpic(new Epic("Предложение", "нужно сделать предложение Вике"));
         taskManager.addSubtask(new Subtask(6, "Купить кольцо", "найти золотое кольцо с бриллиантом"));
+        taskManager.addSubtask(new Subtask(6, "Купить машину", "найти машину до 200к"));
         taskManager.updateTask(new Task(1,"Тренировка", "иду на тренировку", Status.IN_PROGRESS));
         taskManager.updateSubtask(new Subtask(4,3, "Билеты", "билеты куплены", Status.DONE));
         taskManager.updateSubtask(new Subtask(5,3, "Собрать вещи", "осталось чуть-чуть", Status.IN_PROGRESS));
@@ -24,6 +25,19 @@ public class Main {
         taskManager.deleteSubtaskByID(7);
         taskManager.addSubtask(new Subtask(6, "qwerty", "zxcvb"));
         taskManager.updateSubtask(new Subtask(8,6, "qwerty", "qwerty", Status.IN_PROGRESS));
+        taskManager.addTask(new Task("1", "2"));
+        taskManager.addTask(new Task("3", "4"));
+        taskManager.addTask(new Task("5", "6"));
+        taskManager.addTask(new Task("7", "8"));
+        taskManager.addTask(new Task("9", "10"));
+        taskManager.addTask(new Task("11", "12"));
+        taskManager.addTask(new Task("15", "14"));
+        taskManager.addTask(new Task("17", "16"));
+        taskManager.addTask(new Task("19", "18"));
+        taskManager.addTask(new Task("21", "20"));
+        taskManager.addTask(new Task("23", "22"));
+        taskManager.addTask(new Task("25", "24"));
+        taskManager.addSubtask(new Subtask(6, "мавмапуку", "zпxcvb"));
 
         printAllTasks(taskManager);
     }
@@ -47,7 +61,7 @@ public class Main {
         }
 
         System.out.println("История:");
-        for (int i = 1; i < manager.getHistory().size(); i++) {
+        for (int i = 0; i < manager.getHistory().size(); i++) {
             System.out.print(i + ": ");
             System.out.println(manager.getHistory().get(i));
         }
