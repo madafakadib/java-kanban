@@ -15,6 +15,10 @@ public class Epic extends Task {
         super(id, name, description, status);
     }
 
+    public Epic(int id, String name, String desciption, Status status) {
+        super(id, name, desciption, status);
+    }
+
     public void addSubtask(Subtask subtask) {
         subtaskArrayList.add(subtask);
     }
