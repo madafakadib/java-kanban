@@ -25,19 +25,8 @@ public class Main {
         taskManager.deleteSubtaskByID(7);
         taskManager.addSubtask(new Subtask(6, "qwerty", "zxcvb"));
         taskManager.updateSubtask(new Subtask(8,6, "qwerty", "qwerty", Status.IN_PROGRESS));
-        taskManager.addTask(new Task("1", "2"));
-        taskManager.addTask(new Task("3", "4"));
-        taskManager.addTask(new Task("5", "6"));
-        taskManager.addTask(new Task("7", "8"));
-        taskManager.addTask(new Task("9", "10"));
-        taskManager.addTask(new Task("11", "12"));
-        taskManager.addTask(new Task("15", "14"));
-        taskManager.addTask(new Task("17", "16"));
-        taskManager.addTask(new Task("19", "18"));
-        taskManager.addTask(new Task("21", "20"));
-        taskManager.addTask(new Task("23", "22"));
-        taskManager.addTask(new Task("25", "24"));
-        taskManager.addSubtask(new Subtask(6, "мавмапуку", "zпxcvb"));
+
+        taskManager.getTaskByID(2);
 
         printAllTasks(taskManager);
     }
