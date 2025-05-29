@@ -1,4 +1,4 @@
-package mylinkedlist;
+package myLinkedList;
 
 import tasks.Task;
 
