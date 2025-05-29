@@ -27,6 +27,10 @@ public class Main {
         taskManager.updateSubtask(new Subtask(8,6, "qwerty", "qwerty", Status.IN_PROGRESS));
 
         taskManager.getTaskByID(2);
+        taskManager.getTaskByID(2);
+        taskManager.getEpicByID(3);
+        taskManager.getTaskByID(1);
+        taskManager.getTaskByID(2);
 
         printAllTasks(taskManager);
     }
