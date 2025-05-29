@@ -17,14 +17,14 @@ public class Main {
         taskManager.addEpic(new Epic("Предложение", "нужно сделать предложение Вике"));
         taskManager.addSubtask(new Subtask(6, "Купить кольцо", "найти золотое кольцо с бриллиантом"));
         taskManager.addSubtask(new Subtask(6, "Купить машину", "найти машину до 200к"));
-        taskManager.updateTask(new Task(1,"Тренировка", "иду на тренировку", Status.IN_PROGRESS));
-        taskManager.updateSubtask(new Subtask(4,3, "Билеты", "билеты куплены", Status.DONE));
-        taskManager.updateSubtask(new Subtask(5,3, "Собрать вещи", "осталось чуть-чуть", Status.IN_PROGRESS));
-        taskManager.updateSubtask(new Subtask(7,6,"Купить кольцо", "кольцо куплено", Status.DONE));
+        taskManager.updateTask(new Task(1, "Тренировка", "иду на тренировку", Status.IN_PROGRESS));
+        taskManager.updateSubtask(new Subtask(4, 3, "Билеты", "билеты куплены", Status.DONE));
+        taskManager.updateSubtask(new Subtask(5, 3, "Собрать вещи", "осталось чуть-чуть", Status.IN_PROGRESS));
+        taskManager.updateSubtask(new Subtask(7, 6, "Купить кольцо", "кольцо куплено", Status.DONE));
         taskManager.updateTask(new Task(2, "Приготовить", "Сделал рис с курице", Status.DONE));
         taskManager.deleteSubtaskByID(7);
         taskManager.addSubtask(new Subtask(6, "qwerty", "zxcvb"));
-        taskManager.updateSubtask(new Subtask(8,6, "qwerty", "qwerty", Status.IN_PROGRESS));
+        taskManager.updateSubtask(new Subtask(8, 6, "qwerty", "qwerty", Status.IN_PROGRESS));
 
         taskManager.getTaskByID(2);
         taskManager.getTaskByID(2);

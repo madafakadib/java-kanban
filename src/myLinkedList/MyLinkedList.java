@@ -31,7 +31,7 @@ public class MyLinkedList<T extends Task> {
         List<Task> tasks = new ArrayList<>();
         Node<T> node = head;
 
-        while (node != null){
+        while (node != null) {
             tasks.add(node.getData());
             node = node.getNext();
         }

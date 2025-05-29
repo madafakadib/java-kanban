@@ -2,9 +2,10 @@ package managers;
 
 import myLinkedList.MyLinkedList;
 import tasks.Task;
+
 import java.util.List;
 
-public class InMemoryHistoryManager implements HistoryManager{
+public class InMemoryHistoryManager implements HistoryManager {
 
 
     private final MyLinkedList<Task> historyList = new MyLinkedList<>();
