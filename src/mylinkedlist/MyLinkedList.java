@@ -1,4 +1,4 @@
-package myLinkedList;
+package mylinkedlist;
 
 import tasks.Task;
 
@@ -9,7 +9,6 @@ import java.util.List;
 public class MyLinkedList<T extends Task> {
     public Node<T> head;
     public Node<T> tail;
-    private int size = 0;
     private final HashMap<Integer, Node<T>> historyMap = new HashMap<>();
 
     public void linkLast(T data) {

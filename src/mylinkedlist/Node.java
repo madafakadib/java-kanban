@@ -1,6 +1,4 @@
-package myLinkedList;
-
-import tasks.Task;
+package mylinkedlist;
 
 public class Node<T> {
     private T data;
