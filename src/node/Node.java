@@ -1,22 +1,24 @@
-package mylinkedlist;
+package node;
+
+import tasks.Task;
 
 public class Node<T> {
-    private T data;
+    private Task task;
     private Node<T> next;
     private Node<T> prev;
 
-    public Node(T data, Node<T> next, Node<T> prev) {
-        this.data = data;
+    public Node(Task task, Node<T> next, Node<T> prev) {
+        this.task = task;
         this.next = next;
         this.prev = prev;
     }
 
-    public T getData() {
-        return data;
+    public Task getData() {
+        return task;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setData(Task task) {
+        this.task = task;
     }
 
     public Node<T> getNext() {
