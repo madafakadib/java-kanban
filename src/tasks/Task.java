@@ -1,6 +1,7 @@
 package tasks;
 
 import status.Status;
+import status.Type;
 
 import java.util.Objects;
 
@@ -9,6 +10,15 @@ public class Task {
     private String name;
     private String description;
     private Status status;
+    private Type type;
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public Task(String name, String description) {
         this.name = name;
