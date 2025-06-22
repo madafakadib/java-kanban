@@ -1,6 +1,8 @@
 package tasks;
 
 import status.Status;
+import status.Type;
+
 import java.util.Objects;
 
 public class Task {
@@ -8,20 +10,29 @@ public class Task {
     private String name;
     private String description;
     private Status status;
+    private Type type;
 
-    public Task(String name, String description){
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Task(String name, String description) {
         this.name = name;
         this.description = description;
         this.status = Status.NEW;
     }
 
-    public Task(String name, String description, Status status){
+    public Task(String name, String description, Status status) {
         this.name = name;
         this.description = description;
         this.status = status;
     }
 
-    public Task(int id ,String name, String description, Status status){
+    public Task(int id, String name, String description, Status status) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -73,5 +84,4 @@ public class Task {
                 ", status=" + status +
                 '}';
     }
-
 }
