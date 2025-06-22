@@ -69,6 +69,23 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         save();
     }
 
+    static FileBackedTaskManager loadFromFile(File file) {
+        FileBackedTaskManager manager = new FileBackedTaskManager(file);
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line = br.readLine();
+            while (br.ready()) {
+                Task task = fromString(line);
+                manager.addTask(task);
+                line = br.readLine();
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new ManagerSaveException("Error", e);
+        }
+        return manager;
+    }
+
     private void save() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             bw.write("id,type,name,status,description,epic");
@@ -112,7 +129,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         return sbTask.toString();
     }
 
-    private Task fromString(String value) {
+    private static Task fromString(String value) {
         String[] parts = value.split(",");
         int id = Integer.parseInt(parts[0]);
         String typeStr = parts[1];
@@ -132,26 +149,6 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 return new Subtask(id, epicId, name, description, status);
             default:
                 throw new IllegalArgumentException("Неизвестный тип задачи: " + typeStr);
-        }
-    }
-
-    public void loadFromFile(File file) {
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line = br.readLine();
-            while (br.ready()) {
-                Task task = fromString(line);
-                if (task instanceof Epic) {
-                    epics.put(task.getId(), (Epic) task);
-                } else if (task instanceof Subtask) {
-                    subtasks.put(task.getId(), (Subtask) task);
-                } else {
-                    tasks.put(task.getId(), task);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new ManagerSaveException("Error", e);
         }
     }
 
