@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FileBackedTaskManager extends InMemoryTaskManager {
+    private static final DateTimeFormatter FORMATER = DateTimeFormatter.ofPattern("HH:mm dd:MM:yyyy");
     private final File file;
-    private final static DateTimeFormatter FORMATER = DateTimeFormatter.ofPattern("HH:mm dd:MM:yyyy");
 
     public FileBackedTaskManager(File file) {
         this.file = file;
