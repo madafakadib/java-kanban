@@ -5,7 +5,6 @@ import tasks.Subtask;
 import tasks.Task;
 import status.Status;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -236,15 +235,12 @@ public class InMemoryTaskManager implements TaskManager {
 
     private void updateTime(Epic epic) {
         ArrayList<Subtask> subtaskArrayList = epic.getSubtaskArrayList();
-
         LocalDateTime startTime = null;
         LocalDateTime endTime = null;
-        
         for (Subtask subtask : subtaskArrayList) {
             if (subtask.getStartTime() != null) {
                 startTime = subtask.getStartTime();
             }
-            
             if (subtask.getEndTime() != null) {
                 endTime = subtask.getEndTime();
             }
@@ -254,18 +250,20 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     private boolean intersection(Task task) {
+        boolean intersection = false;
         for (Task otherTask : prioritizedTasks) {
             if (task.getStartTime() == null || otherTask.getStartTime() == null) {
-                return true;
-            }
-            if(task.getEndTime().isBefore(otherTask.getStartTime())
+                intersection = true;
+            } else if (task.getEndTime().isBefore(otherTask.getStartTime())
                     || task.getEndTime().equals(otherTask.getStartTime())
                     || task.getStartTime().isAfter(otherTask.getEndTime())
-                    || task.getStartTime().equals(otherTask.getStartTime())){
-                return true;
+                    || task.getStartTime().equals(otherTask.getStartTime())) {
+                intersection = true;
+            } else {
+                intersection = false;
             }
         }
-        return false;
+        return intersection;
     }
 
     private Epic getEpicID(int id) {
