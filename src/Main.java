@@ -5,32 +5,19 @@ import tasks.Epic;
 import tasks.Subtask;
 import tasks.Task;
 
+import java.time.LocalDateTime;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         TaskManager taskManager = new InMemoryTaskManager();
 
-        taskManager.addTask(new Task("Тренировка", "утренняя тренировка"));
-        taskManager.addTask(new Task("Приготовить", "приготовить гречку с фаршем"));
-        taskManager.addEpic(new Epic("Переезд", "подготовить к переезду в питер"));
-        taskManager.addSubtask(new Subtask(3, "Билеты", "купить билеты в питер"));
-        taskManager.addSubtask(new Subtask(3, "Собрать вещи", "отправить их доставкой СДЕК"));
-        taskManager.addEpic(new Epic("Предложение", "нужно сделать предложение Вике"));
-        taskManager.addSubtask(new Subtask(6, "Купить кольцо", "найти золотое кольцо с бриллиантом"));
-        taskManager.addSubtask(new Subtask(6, "Купить машину", "найти машину до 200к"));
-        taskManager.updateTask(new Task(1, "Тренировка", "иду на тренировку", Status.IN_PROGRESS));
-        taskManager.updateSubtask(new Subtask(4, 3, "Билеты", "билеты куплены", Status.DONE));
-        taskManager.updateSubtask(new Subtask(5, 3, "Собрать вещи", "осталось чуть-чуть", Status.IN_PROGRESS));
-        taskManager.updateSubtask(new Subtask(7, 6, "Купить кольцо", "кольцо куплено", Status.DONE));
-        taskManager.updateTask(new Task(2, "Приготовить", "Сделал рис с курице", Status.DONE));
-        taskManager.deleteSubtaskByID(7);
-        taskManager.addSubtask(new Subtask(6, "qwerty", "zxcvb"));
-        taskManager.updateSubtask(new Subtask(8, 6, "qwerty", "qwerty", Status.IN_PROGRESS));
-
-        taskManager.getTaskByID(2);
-        taskManager.getTaskByID(2);
-        taskManager.getEpicByID(3);
-        taskManager.getTaskByID(1);
-        taskManager.getTaskByID(2);
+        taskManager.addTask(new Task("svadba", "dozhit"));
+        //Thread.sleep(30000);
+        taskManager.addEpic(new Epic("fgbjkh", "dsetrd", LocalDateTime.now()));
+        //Thread.sleep(30000);
+        taskManager.addSubtask(new Subtask(2, "qwerty", "ytrewq", LocalDateTime.now()));
+        //Task task1 = taskManager.getTaskByID(1);
+       // System.out.println(task1.getStartTime());
 
         printAllTasks(taskManager);
     }
