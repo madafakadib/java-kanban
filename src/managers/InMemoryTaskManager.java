@@ -197,6 +197,7 @@ public class InMemoryTaskManager implements TaskManager {
         return historyManager.getHistory();
     }
 
+    @Override
     public Set<Task> getPrioritizedTasks() {
         return prioritizedTasks;
     }
@@ -249,7 +250,8 @@ public class InMemoryTaskManager implements TaskManager {
         epic.setEndTime(endTime);
     }
 
-    private boolean intersection(Task task) {
+    @Override
+    public boolean intersection(Task task) {
         boolean intersection = false;
         for (Task otherTask : prioritizedTasks) {
             if (task.getStartTime() == null || otherTask.getStartTime() == null) {
