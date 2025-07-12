@@ -11,6 +11,7 @@ public class BaseHttpHandler {
         h.sendResponseHeaders(200, resp.length);
         h.getResponseBody().write(resp);
         h.close();
+
     }
 
     protected void sendNotFound(HttpExchange h) throws IOException {
