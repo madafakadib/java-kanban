@@ -19,13 +19,11 @@ public class PrioritizedHandler extends BaseHttpHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         try {
             String method = exchange.getRequestMethod();
-            switch (method) {
-                case "GET":
-                    handleGet(exchange);
-                    break;
-                default:
-                    exchange.sendResponseHeaders(405, 0);
-                    exchange.close();
+            if (method.equals("GET")) {
+                handleGet(exchange);
+            } else {
+                exchange.sendResponseHeaders(405, 0);
+                exchange.close();
             }
         } catch (Exception e) {
             exchange.sendResponseHeaders(500, 0);
