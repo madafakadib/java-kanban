@@ -97,17 +97,17 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             bw.newLine();
 
             for (Task task : getTasks()) {
-                bw.write(toStr(task));
+                bw.write(toString(task));
                 bw.newLine();
             }
 
             for (Subtask subtask : getSubtask()) {
-                bw.write(toStr(subtask));
+                bw.write(toString(subtask));
                 bw.newLine();
             }
 
             for (Epic epic : getEpics()) {
-                bw.write(toStr(epic));
+                bw.write(toString(epic));
                 bw.newLine();
             }
         } catch (IOException e) {
@@ -115,7 +115,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         }
     }
 
-    private String toStr(Task task) {
+    private String toString(Task task) {
         String time = task.getStartTime().format(FORMATER);
         StringBuilder sbTask = new StringBuilder();
         sbTask.append(task.getId()).append(",");
@@ -130,7 +130,6 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         sbTask.append(task.getStatus()).append(",");
         sbTask.append(task.getDescription()).append(",");
         sbTask.append(time);
-    //    sbTask.append(task.getEndTime()).append(",");
         if (task instanceof Subtask subtask) {
             sbTask.append(subtask.getEpicID());
         }
@@ -150,15 +149,12 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
         switch (Type.valueOf(parts[1])) {
             case TASK:
-                Task task =  new Task(id, name, description, status, localDateTime);
-                return task;
+                return new Task(id, name, description, status, localDateTime);
             case EPIC:
-                Epic epic = new Epic(id, name, description, status, localDateTime);
-                return epic;
+                return new Epic(id, name, description, status, localDateTime);
             case SUBTASK:
                 int epicId = Integer.parseInt(parts[6]);
-                Subtask subtask = new Subtask(id, epicId, name, description, status, localDateTime);
-                return subtask;
+                return new Subtask(id, epicId, name, description, status, localDateTime);
             default:
                 throw new IllegalArgumentException("Неизвестный тип задачи: " + typeStr);
         }
