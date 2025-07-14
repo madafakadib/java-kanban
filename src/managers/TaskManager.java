@@ -5,6 +5,7 @@ import tasks.Subtask;
 import tasks.Task;
 
 import java.util.List;
+import java.util.Set;
 
 public interface TaskManager {
     void addTask(Task task);
@@ -46,4 +47,8 @@ public interface TaskManager {
     List<Subtask> getSubtasksByEpicID(int id);
 
     List<Task> getHistory();
+
+    boolean intersection(Task task);
+
+    Set<Task> getPrioritizedTasks();
 }
